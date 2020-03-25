@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "products")
 public class Product implements DtoConvertable<ProductDto> {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
