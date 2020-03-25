@@ -1,7 +1,7 @@
 package com.nike.nordgym.domain;
 
 import com.nike.nordgym.common.DtoConvertable;
-import com.nike.nordgym.models.ProductDto;
+import com.nike.nordgym.model.ProductDto;
 import lombok.Data;
 
 import javax.persistence.*;

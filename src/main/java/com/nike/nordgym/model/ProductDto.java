@@ -1,4 +1,4 @@
-package com.nike.nordgym.models;
+package com.nike.nordgym.model;
 
 import lombok.Data;
 
