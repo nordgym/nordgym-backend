@@ -2,7 +2,6 @@ package com.nike.nordgym.controller;
 
 import com.nike.nordgym.model.ProductDto;
 import com.nike.nordgym.service.ProductService;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +20,6 @@ public class ProductController {
     @RequestMapping("/all")
     public List<ProductDto> getAllProducts() {
 
-        return this.productService.getAll();
+       return this.productService.getAll();
     }
 }
