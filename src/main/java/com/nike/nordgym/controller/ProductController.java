@@ -2,6 +2,7 @@ package com.nike.nordgym.controller;
 
 import com.nike.nordgym.model.ProductDto;
 import com.nike.nordgym.service.ProductService;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,5 +22,10 @@ public class ProductController {
     public List<ProductDto> getAllProducts() {
 
        return this.productService.getAll();
+    }
+
+    @RequestMapping("/save")
+    public void addProduct(@RequestBody ProductDto productDto) {
+        productService.save(productDto);
     }
 }
