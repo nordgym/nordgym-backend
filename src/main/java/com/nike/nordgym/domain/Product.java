@@ -1,7 +1,5 @@
 package com.nike.nordgym.domain;
 
-import com.nike.nordgym.common.DtoConvertable;
-import com.nike.nordgym.model.ProductDto;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -11,7 +9,7 @@ import java.math.BigDecimal;
 @Data
 @Entity
 @Table(name = "products")
-public class Product implements DtoConvertable<ProductDto> {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,8 +22,4 @@ public class Product implements DtoConvertable<ProductDto> {
     @DecimalMin(value = "0.01")
     private BigDecimal price;
 
-    @Override
-    public ProductDto toDto() {
-        return new ProductDto(id, name, price);
-    }
 }

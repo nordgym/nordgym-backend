@@ -2,6 +2,7 @@ package com.nike.nordgym.model;
 
 import lombok.Data;
 
+
 import java.math.BigDecimal;
 
 @Data
