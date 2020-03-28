@@ -26,6 +26,7 @@ public class ProductController {
 
     @RequestMapping("/save")
     public void addProduct(@RequestBody ProductDto productDto) {
+
         productService.save(productDto);
     }
 }

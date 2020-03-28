@@ -21,5 +21,4 @@ public class Product {
     @Column(nullable = false)
     @DecimalMin(value = "0.01")
     private BigDecimal price;
-
 }
