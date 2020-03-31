@@ -8,5 +8,5 @@ public interface UserService {
 
     List<UserDto> getAll();
 
-    void register(UserDto userDto);
+    UserDto register(UserDto userDto);
 }
