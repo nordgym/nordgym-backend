@@ -29,8 +29,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void save(ProductDto productDto) {
+    public ProductDto save(ProductDto productDto) {
         Product product = modelMapper.map(productDto, Product.class);
-        productRepository.save(product);
+        return modelMapper.map(productRepository.save(product), ProductDto.class);
     }
 }

@@ -2,8 +2,11 @@ package com.nike.nordgym.controller;
 
 import com.nike.nordgym.model.ProductDto;
 import com.nike.nordgym.service.ProductService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,7 +26,11 @@ public class ProductController {
     }
 
     @PostMapping("/save")
-    public void addProduct(@RequestBody ProductDto productDto) {
-        this.productService.save(productDto);
+    public ResponseEntity<ProductDto> addProduct(@Valid @RequestBody ProductDto productDto) {
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(this.productService.save(productDto));
+
     }
 }

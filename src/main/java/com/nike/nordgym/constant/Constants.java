@@ -11,4 +11,8 @@ public class Constants {
             "User's first name must be min 2 max 15 characters long and contains only letters";
     public static final String USER_LAST_NAME_ERROR_MESSAGE =
             "User's last name must be min 2 max 15 characters long and contains only letters";
+    public static final String PRODUCT_NAME_ERROR_MESSAGE =
+            "Product's name must be between 2 and 50 characters long";
+    public static final String PRODUCT_PRICE_ERROR_MESSAGE =
+            "Product's price can be maximum 4 digits to the left and 2 digits to the right from the decimal point";
 }
