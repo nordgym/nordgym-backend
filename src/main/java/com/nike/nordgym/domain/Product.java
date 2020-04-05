@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,4 +22,7 @@ public class Product {
     @Column(nullable = false)
     @DecimalMin(value = "0.01")
     private BigDecimal price;
+
+    @ManyToMany(targetEntity = Order.class, mappedBy = "products")
+    private List<Order> orders;
 }

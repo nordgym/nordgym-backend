@@ -8,5 +8,5 @@ public interface ProductService {
 
     List<ProductDto> getAll();
 
-    void save(ProductDto productDto);
+    void save(ProductDto dto);
 }

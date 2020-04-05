@@ -31,8 +31,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto register(UserDto userDto) {
-        User user = modelMapper.map(userDto, User.class);
+    public UserDto save(UserDto dto) {
+        User user = modelMapper.map(dto, User.class);
         this.userRepository.findBySubscriptionNumber(user.getSubscriptionNumber())
                 .ifPresent(e -> {
                     throw new DuplicatedResourceException(Constants.DUPLICATED_RESOURCE);
