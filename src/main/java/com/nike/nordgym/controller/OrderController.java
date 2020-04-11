@@ -4,6 +4,7 @@ import com.nike.nordgym.model.OrderDto;
 import com.nike.nordgym.model.UserDto;
 import com.nike.nordgym.service.OrderService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,11 +24,12 @@ public class OrderController {
 
     @GetMapping("/all")
     public List<OrderDto> getAll() {
+
         return orderService.getAll();
     }
 
     @PostMapping("/save")
-    public ResponseEntity<OrderDto> register(@Valid @RequestBody OrderDto dto) {
+    public ResponseEntity<OrderDto> save(@Valid @RequestBody OrderDto dto) {
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)

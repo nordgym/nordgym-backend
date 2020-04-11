@@ -3,7 +3,9 @@ package com.nike.nordgym.service;
 import com.nike.nordgym.constant.Constants;
 import com.nike.nordgym.domain.User;
 import com.nike.nordgym.error.DuplicatedResourceException;
+import com.nike.nordgym.error.ResourceNotFoundException;
 import com.nike.nordgym.model.UserDto;
+import com.nike.nordgym.repository.OrderRepository;
 import com.nike.nordgym.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -15,10 +17,12 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final OrderRepository orderRepository;
     private final ModelMapper modelMapper;
 
-    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper) {
+    public UserServiceImpl(UserRepository userRepository, OrderRepository orderRepository, ModelMapper modelMapper) {
         this.userRepository = userRepository;
+        this.orderRepository = orderRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -39,5 +43,18 @@ public class UserServiceImpl implements UserService {
                 });
 
         return modelMapper.map(userRepository.save(user), UserDto.class);
+    }
+
+    @Override
+    public UserDto delete(Long id) {
+        User user = this.userRepository.findById(id).orElse(null);
+        if (user == null) {
+            throw new ResourceNotFoundException(
+                    String.format(Constants.USER_NOT_FOUND_BY_ID, id)
+            );
+        }
+        this.orderRepository.deleteAll(user.getOrders());
+        this.userRepository.delete(user);
+        return this.modelMapper.map(user, UserDto.class);
     }
 }

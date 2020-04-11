@@ -31,5 +31,4 @@ public class User {
 
     @OneToMany(targetEntity = Order.class, mappedBy = "user", fetch = FetchType.EAGER)
     private List<Order> orders;
-
 }

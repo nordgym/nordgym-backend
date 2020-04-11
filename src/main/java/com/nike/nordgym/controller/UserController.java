@@ -22,15 +22,23 @@ public class UserController {
     @GetMapping("/all")
     public List<UserDto> getAll() {
 
-       return userService.getAll();
+        return userService.getAll();
     }
 
     @PostMapping("/save")
-    public ResponseEntity<UserDto> register(@Valid @RequestBody UserDto dto){
+    public ResponseEntity<UserDto> register(@Valid @RequestBody UserDto dto) {
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(this.userService.save(dto));
 
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<UserDto> delete(@PathVariable(name = "id") Long id){
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.userService.delete(id));
     }
 }

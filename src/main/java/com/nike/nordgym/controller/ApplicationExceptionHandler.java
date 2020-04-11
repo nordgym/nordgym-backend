@@ -2,6 +2,7 @@ package com.nike.nordgym.controller;
 
 import com.nike.nordgym.constant.Constants;
 import com.nike.nordgym.error.DuplicatedResourceException;
+import com.nike.nordgym.error.ResourceNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
 
     private Map<String, String> errors;
 
-    @ExceptionHandler(DuplicatedResourceException.class)
+    @ExceptionHandler({DuplicatedResourceException.class})
     protected ResponseEntity<Object> handleConflict(RuntimeException ex) {
 
         errors = new HashMap<>();
