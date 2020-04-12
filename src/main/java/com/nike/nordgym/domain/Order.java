@@ -33,4 +33,11 @@ public class Order {
             inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id")
     )
     private List<Product> products;
+
+    @ManyToMany(targetEntity = Membership.class, fetch = FetchType.LAZY)
+    @JoinTable(name = "orders_memberships",
+            joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "membership_id", referencedColumnName = "id")
+    )
+    private List<Membership> memberships;
 }
