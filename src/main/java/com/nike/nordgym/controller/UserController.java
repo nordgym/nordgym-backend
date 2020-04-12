@@ -26,7 +26,6 @@ public class UserController {
 
     @PostMapping("/save")
     public ResponseEntity<UserDto> register(@Valid @RequestBody UserDto dto) {
-
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(this.userService.save(dto));
@@ -34,7 +33,6 @@ public class UserController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<UserDto> delete(@PathVariable(name = "id") Long id){
-
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(this.userService.delete(id));

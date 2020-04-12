@@ -33,6 +33,7 @@ public class OrderController {
                 .status(HttpStatus.CREATED)
                 .body(this.orderService.save(dto));
     }
+
     @PatchMapping("/complete")
     public ResponseEntity<OrderDto> complete(@RequestBody Long id) {
         return ResponseEntity
