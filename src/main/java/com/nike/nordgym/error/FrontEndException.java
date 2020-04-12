@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FrontEndException extends RuntimeException {
+
     private static final long serialVersionUID = 5544640120959837305L;
     private boolean shouldSerializeStackTrace = false;
 

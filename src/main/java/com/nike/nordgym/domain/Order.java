@@ -1,12 +1,11 @@
 package com.nike.nordgym.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.util.List;
 
 @Getter
@@ -14,13 +13,19 @@ import java.util.List;
 @Entity
 @Table(name = "orders")
 public class Order {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @ManyToOne(targetEntity = User.class)
     private User user;
+
+    @CreationTimestamp
+    private Instant dateTime;
+
+    @Column(columnDefinition = "boolean default true")
+    private Boolean isOpen = true;
 
     @ManyToMany(targetEntity = Product.class, fetch = FetchType.LAZY)
     @JoinTable(name = "orders_products",

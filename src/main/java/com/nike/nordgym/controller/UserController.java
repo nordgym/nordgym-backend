@@ -21,7 +21,6 @@ public class UserController {
 
     @GetMapping("/all")
     public List<UserDto> getAll() {
-
         return userService.getAll();
     }
 
@@ -31,7 +30,6 @@ public class UserController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(this.userService.save(dto));
-
     }
 
     @DeleteMapping("/delete/{id}")

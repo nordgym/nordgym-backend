@@ -12,4 +12,5 @@ public class Constants {
     public static final String USER_LAST_NAME_ERROR_MESSAGE =
             "Last name must be min 2 max 15 characters long";
     public static final String USER_NOT_FOUND_BY_ID = "User with ID: %s doesn't exists in the database" ;
+    public static final String ORDER_NOT_FOUND_BY_ID = "Order with ID: %s doesn't exists in the database";
 }
