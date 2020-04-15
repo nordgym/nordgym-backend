@@ -3,11 +3,12 @@ package com.nike.nordgym.domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
 @Table(name = "users")
-public class User{
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,8 +28,7 @@ public class User{
 
     @Column()
     private String password;
-    //TODO: uncomment when order is created
-//  @OneToMany(targetEntity = Order.class, mappedBy = "user", fetch = FetchType.EAGER)
-//  private List<Order> orders;
 
+    @OneToMany(targetEntity = Order.class, mappedBy = "user", fetch = FetchType.EAGER)
+    private List<Order> orders;
 }

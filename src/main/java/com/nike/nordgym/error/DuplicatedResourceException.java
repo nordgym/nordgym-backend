@@ -2,10 +2,12 @@ package com.nike.nordgym.error;
 
 import com.nike.nordgym.constant.Constants;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @ResponseStatus(
