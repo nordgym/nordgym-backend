@@ -2,11 +2,8 @@ package com.nike.nordgym.controller;
 
 import com.nike.nordgym.model.ProductDto;
 import com.nike.nordgym.service.ProductService;
-<<<<<<< HEAD
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-=======
->>>>>>> 61073dc0a48323a3b950f7ef82685474d0946929
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
