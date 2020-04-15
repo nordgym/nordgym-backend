@@ -1,7 +1,6 @@
 package com.nike.nordgym.domain;
 
 import lombok.Data;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;

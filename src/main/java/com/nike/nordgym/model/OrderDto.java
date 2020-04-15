@@ -15,4 +15,5 @@ public class OrderDto {
     private Instant dateTime;
     private Boolean isOpen;
     private List<ProductDto> products;
+    private List<MembershipDto> memberships;
 }
