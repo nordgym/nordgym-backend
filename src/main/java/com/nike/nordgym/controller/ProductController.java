@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -31,5 +32,11 @@ public class ProductController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(this.productService.save(productDto));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    @Transactional
+    public void delete(@PathVariable Long id) {
+        this.productService.delete(id);
     }
 }
