@@ -2,7 +2,7 @@ package com.nike.nordgym.service;
 
 import com.nike.nordgym.constant.Constants;
 import com.nike.nordgym.domain.User;
-import com.nike.nordgym.error.DuplicatedSubscriptionNumberException;
+import com.nike.nordgym.error.DuplicatedResourceException;
 import com.nike.nordgym.model.UserDto;
 import com.nike.nordgym.repository.UserRepository;
 import org.modelmapper.ModelMapper;
@@ -35,11 +35,8 @@ public class UserServiceImpl implements UserService {
         User user = modelMapper.map(userDto, User.class);
         this.userRepository.findBySubscriptionNumber(user.getSubscriptionNumber())
                 .ifPresent(e -> {
-                            throw new DuplicatedSubscriptionNumberException(
-                                    Constants.INVALID_SUBSCRIPTION_NUMBER_DUPLICATED
-                            );
-                        }
-                );
+                    throw new DuplicatedResourceException(Constants.DUPLICATED_RESOURCE);
+                });
 
         return modelMapper.map(userRepository.save(user), UserDto.class);
     }

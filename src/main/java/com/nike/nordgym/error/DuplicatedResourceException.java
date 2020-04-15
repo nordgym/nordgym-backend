@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @NoArgsConstructor
 @ResponseStatus(
         value = HttpStatus.NOT_FOUND,
-        reason = Constants.INVALID_SUBSCRIPTION_NUMBER_DUPLICATED
+        reason = Constants.DUPLICATED_RESOURCE
 )
-public class DuplicatedSubscriptionNumberException extends RuntimeException {
+public class DuplicatedResourceException extends RuntimeException {
 
     private int statusCode = HttpStatus.NOT_FOUND.value();
 
-    public DuplicatedSubscriptionNumberException(String message) {
+    public DuplicatedResourceException(String message) {
         super(message);
     }
 }
