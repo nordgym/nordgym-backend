@@ -34,9 +34,4 @@ public class ProductServiceImpl implements ProductService {
         Product product = modelMapper.map(productDto, Product.class);
         return modelMapper.map(productRepository.save(product), ProductDto.class);
     }
-
-    @Override
-    public void delete(Long id) {
-        this.productRepository.delete(id);
-    }
 }
