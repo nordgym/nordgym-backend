@@ -4,6 +4,7 @@ import com.nike.nordgym.domain.Product;
 import com.nike.nordgym.model.ProductDto;
 import com.nike.nordgym.repository.ProductRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,11 +13,11 @@ import java.util.stream.Collectors;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    private final ProductRepository productRepository;
+    @Autowired
+    private ProductRepository productRepository;
     private final ModelMapper modelMapper;
 
-    public ProductServiceImpl(ProductRepository productRepository, ModelMapper modelMapper) {
-        this.productRepository = productRepository;
+    public ProductServiceImpl(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }
 
@@ -32,5 +33,10 @@ public class ProductServiceImpl implements ProductService {
     public ProductDto save(ProductDto productDto) {
         Product product = modelMapper.map(productDto, Product.class);
         return modelMapper.map(productRepository.save(product), ProductDto.class);
+    }
+
+    @Override
+    public void delete(Long id) {
+        this.productRepository.delete(id);
     }
 }

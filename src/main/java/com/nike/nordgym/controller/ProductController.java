@@ -1,5 +1,6 @@
 package com.nike.nordgym.controller;
 
+import com.nike.nordgym.domain.Product;
 import com.nike.nordgym.model.ProductDto;
 import com.nike.nordgym.service.ProductService;
 import org.springframework.http.HttpStatus;
@@ -31,5 +32,10 @@ public class ProductController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(this.productService.save(productDto));
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public void delete(@PathVariable("id") Long id) {
+        this.productService.delete(id);
     }
 }
