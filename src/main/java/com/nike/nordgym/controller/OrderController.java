@@ -22,6 +22,12 @@ public class OrderController {
         return orderService.getAll();
     }
 
+    @GetMapping("/all/user/id")
+    public List<OrderDto> getAllByUserId(@RequestParam Long id) {
+       var test = orderService.getAllByUserId(id);
+       return test;
+    }
+
     @GetMapping("/open")
     public List<OrderDto> getAllOpen() {
         return orderService.getAllOpen();

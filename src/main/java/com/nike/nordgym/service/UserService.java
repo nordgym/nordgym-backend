@@ -11,4 +11,6 @@ public interface UserService {
     UserDto save(UserDto dto);
 
     UserDto delete(Long id);
+
+    UserDto getById(Long id);
 }

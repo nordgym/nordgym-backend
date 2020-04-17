@@ -24,6 +24,10 @@ public class UserController {
         return userService.getAll();
     }
 
+    @GetMapping("/{id}")
+    public UserDto getById(@PathVariable Long id) {
+        return userService.getById(id);
+    }
     @PostMapping("/save")
     public ResponseEntity<UserDto> register(@Valid @RequestBody UserDto dto) {
         return ResponseEntity

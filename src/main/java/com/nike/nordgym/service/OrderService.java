@@ -14,4 +14,6 @@ public interface OrderService {
     List<OrderDto> getAllOpen();
 
     OrderDto complete(Long id);
+
+    List<OrderDto> getAllByUserId(Long id);
 }

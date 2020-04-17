@@ -53,4 +53,12 @@ public class OrderServiceImpl implements OrderService {
         order.setIsOpen(false);
         return modelMapper.map(orderRepository.save(order), OrderDto.class);
     }
+
+    @Override
+    public List<OrderDto> getAllByUserId(Long id) {
+        return orderRepository.findAllByUserId(id)
+                .stream()
+                .map(order -> modelMapper.map(order, OrderDto.class))
+                .collect(Collectors.toList());
+    }
 }

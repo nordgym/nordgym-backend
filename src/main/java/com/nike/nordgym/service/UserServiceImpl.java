@@ -57,4 +57,13 @@ public class UserServiceImpl implements UserService {
         this.userRepository.delete(user);
         return this.modelMapper.map(user, UserDto.class);
     }
+
+    @Override
+    public UserDto getById(Long id) {
+        User user = this.userRepository.findById(id).orElse(null);
+        if (user == null) {
+            throw new ResourceNotFoundException(String.format(Constants.USER_NOT_FOUND_BY_ID, id));
+        }
+        return this.modelMapper.map(user, UserDto.class);
+    }
 }
