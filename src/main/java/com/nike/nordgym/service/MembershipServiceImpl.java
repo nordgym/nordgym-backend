@@ -7,6 +7,7 @@ import com.nike.nordgym.model.MembershipDto;
 import com.nike.nordgym.repository.MembershipRepository;
 import com.nike.nordgym.repository.OrderRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,5 +51,18 @@ public class MembershipServiceImpl implements MembershipService {
         this.orderRepository.deleteAll(membership.getOrders());
         this.membershipRepository.delete(membership);
         return this.modelMapper.map(membership, MembershipDto.class);
+    }
+
+    @Override
+    public MembershipDto activate(MembershipDto dto) {
+        Membership membership = this.membershipRepository.findById(dto.getId()).orElse(null);
+        if (membership == null) {
+            throw new ResourceNotFoundException(
+                    String.format(Constants.MEMBERSHIP_NOT_FOUND_BY_ID, dto.getId())
+            );
+        }
+        membership.setStartDate(dto.getStartDate());
+        membership.setEndDate(dto.getEndDate());
+        return this.modelMapper.map(this.membershipRepository.save(membership), MembershipDto.class);
     }
 }

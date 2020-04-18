@@ -1,7 +1,6 @@
 package com.nike.nordgym.controller;
 
 import com.nike.nordgym.model.MembershipDto;
-import com.nike.nordgym.model.UserDto;
 import com.nike.nordgym.service.MembershipService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,10 +29,18 @@ public class MembershipController {
                 .status(HttpStatus.CREATED)
                 .body(this.membershipService.save(dto));
     }
+
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<MembershipDto> delete(@PathVariable(name = "id") Long id){
+    public ResponseEntity<MembershipDto> delete(@PathVariable(name = "id") Long id) {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(this.membershipService.delete(id));
+    }
+
+    @PatchMapping("/activate")
+    public ResponseEntity<MembershipDto> activate(@RequestBody MembershipDto dto) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.membershipService.activate(dto));
     }
 }
