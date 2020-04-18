@@ -30,9 +30,30 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public ProductDto getById(Long id) {
+        return modelMapper.map(this.productRepository.getProductById(id), ProductDto.class);
+    }
+
+    @Override
     public ProductDto save(ProductDto productDto) {
         Product product = modelMapper.map(productDto, Product.class);
         return modelMapper.map(productRepository.save(product), ProductDto.class);
+    }
+
+    @Override
+    public ProductDto update(Long id, ProductDto productDto) {
+        if (productRepository.findById(id).isPresent()){
+            Product existingProduct = productRepository.findById(id).get();
+
+            existingProduct.setName(productDto.getName());
+            existingProduct.setPrice(productDto.getPrice());
+
+            Product updatedProduct = productRepository.save(existingProduct);
+
+            return new ProductDto(updatedProduct.getId(), updatedProduct.getName(), updatedProduct.getPrice());
+        } else {
+            return null;
+        }
     }
 
     @Override
