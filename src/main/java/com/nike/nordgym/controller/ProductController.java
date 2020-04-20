@@ -40,14 +40,16 @@ public class ProductController {
                 .body(this.productService.save(productDto));
     }
 
-    @PutMapping(value = "/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/update/{id}",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<ProductDto> edit(@PathVariable(value = "id") Long id,
-                                           @RequestBody ProductDto productDto) {
-        return new ResponseEntity<>(productService.update(id, productDto), HttpStatus.OK);
+    public void edit(@PathVariable(value = "id") Long id, @RequestBody ProductDto productDto) {
+        this.productService.update(id, productDto);
     }
 
     @DeleteMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable(value = "id") Long id) {
         this.productService.delete(id);
     }
